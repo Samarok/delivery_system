@@ -4,16 +4,17 @@ import '../models/sensor_data.dart';
 import '../models/delivery.dart';
 
 class ApiService {
-  static const String baseUrl = 'http://your-backend-url.com/api';
+  static const String baseUrl = 'http://10.0.2.2:8000/api';
   String? _token;
 
   Future<void> login(String username, String password) async {
     final response = await http.post(
       Uri.parse('$baseUrl/auth/login'),
-      body: {
+      headers: {'Content-Type': 'application/json'},  // ← ДОБАВИТЬ
+      body: json.encode({  // ← ИСПОЛЬЗОВАТЬ json.encode
         'username': username,
         'password': password,
-      },
+      }),
     );
 
     if (response.statusCode == 200) {
