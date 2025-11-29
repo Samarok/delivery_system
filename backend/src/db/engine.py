@@ -6,7 +6,7 @@ from core.config import settings
 
 def get_engine() -> AsyncEngine:
     return create_async_engine(
-        settings.db_url, connect_args={"autocommit": False, "check_same_thread": False}
+        settings.db_url, connect_args={"check_same_thread": False}
     )
 
 

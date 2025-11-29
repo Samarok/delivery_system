@@ -8,14 +8,14 @@ class ApiService {
   String? _token;
 
   Future<void> login(String username, String password) async {
+    print('Trying to login at: $baseUrl/auth/login');
     final response = await http.post(
       Uri.parse('$baseUrl/auth/login'),
-      headers: {'Content-Type': 'application/json'},  // ← ДОБАВИТЬ
-      body: json.encode({  // ← ИСПОЛЬЗОВАТЬ json.encode
-        'username': username,
-       'password': password,
-      }),
-    );
+      headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    body: 'grant_type=password&username=${Uri.encodeComponent(username)}&password=${Uri.encodeComponent(password)}&scope=&client_id=&client_secret=',
+  );
 
     if (response.statusCode == 200) {
       final data = json.decode(response.body);
@@ -32,7 +32,11 @@ class ApiService {
     );
 
     if (response.statusCode == 200) {
-      final List<dynamic> data = json.decode(response.body);
+      //final List<dynamic> data = json.decode(response.body);
+
+      final Map<String, dynamic> resp = json.decode(response.body);
+      final List<dynamic> data = resp['data'];
+
       return data.map((json) => SensorData.fromJson(json)).toList();
     } else {
       throw Exception('Failed to load temperature data');
@@ -46,7 +50,8 @@ class ApiService {
     );
 
     if (response.statusCode == 200) {
-      final List<dynamic> data = json.decode(response.body);
+      final Map<String, dynamic> resp = json.decode(response.body);
+      final List<dynamic> data = resp['deliveries'];
       return data.map((json) => Delivery.fromJson(json)).toList();
     } else {
       throw Exception('Failed to load deliveries');

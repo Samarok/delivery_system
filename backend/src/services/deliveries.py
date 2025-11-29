@@ -102,9 +102,9 @@ class DeliveryService:
 
         return DeliveryFlutterResponse(
             id=delivery.id,
-            status=delivery.delivery_status.name,
-            driver_name=delivery.driver.username,
-            receiver_name=delivery.receiver.username,
+            status=delivery.status.name,
+            driver_name=delivery.driver_name,
+            receiver_name=delivery.receiver_name,
             current_temperature=delivery.current_temperature,
             created_at=delivery.created_at,
         )
@@ -134,9 +134,9 @@ class DeliveryService:
             flutter_deliveries = [
                 DeliveryFlutterResponse(
                     id=delivery.id,
-                    status=delivery.delivery_status.name,
-                    driver_name=delivery.driver.username,
-                    receiver_name=delivery.receiver.username,
+                    status=delivery.status.name,
+                    driver_name=delivery.driver_name,
+                    receiver_name=delivery.receiver_name,
                     current_temperature=delivery.current_temperature,
                     created_at=delivery.created_at,
                 )
@@ -184,9 +184,9 @@ class DeliveryService:
                 flutter_deliveries.append(
                     DeliveryFlutterResponse(
                         id=delivery_full.id,
-                        status=delivery_full.delivery_status.name,
-                        driver_name=delivery_full.driver.username,
-                        receiver_name=delivery_full.receiver.username,
+                        status=delivery_full.status.name,
+                        driver_name=delivery_full.driver_name,
+                        receiver_name=delivery_full.receiver_name,
                         current_temperature=delivery_full.current_temperature,
                         created_at=delivery_full.created_at,
                     )
@@ -213,9 +213,9 @@ class DeliveryService:
                 flutter_deliveries.append(
                     DeliveryFlutterResponse(
                         id=delivery_full.id,
-                        status=delivery_full.delivery_status.name,
-                        driver_name=delivery_full.driver.username,
-                        receiver_name=delivery_full.receiver.username,
+                        status=delivery_full.status.name,
+                        driver_name=delivery_full.driver_name,
+                        receiver_name=delivery_full.receiver_name,
                         current_temperature=delivery_full.current_temperature,
                         created_at=delivery_full.created_at,
                     )
@@ -425,9 +425,9 @@ class DeliveryStatusService:
         flutter_deliveries = [
             DeliveryFlutterResponse(
                 id=d.id,
-                status=d.delivery_status.name,
-                driver_name=d.driver.username,
-                receiver_name=d.receiver.username,
+                status=d.status.name,
+                driver_name=d.driver_name,
+                receiver_name=d.receiver_name,
                 current_temperature=d.current_temperature,
                 created_at=d.created_at,
             )
