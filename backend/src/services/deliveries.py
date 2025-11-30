@@ -460,7 +460,6 @@ class DeliveryStatusService:
         current_status_name = current_status_obj.name
         role_name = current_user.role.name
 
-        # Проверка логики перехода статусов согласно ТЗ
         is_valid_transition = False
 
         if role_name == USER_ROLE_DRIVER:
