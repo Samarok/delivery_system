@@ -139,11 +139,8 @@ async def websocket_temperature(websocket: WebSocket):
     await manager.connect(websocket)
     try:
         while True:
-            # В реальном приложении здесь будет логика получения данных из БД
-            # или от внешних IoT устройств
             await asyncio.sleep(5)
 
-            # Пример данных для отправки
             example_data = SensorDataFlutterResponse(
                 id=1,
                 temperature=5.5,

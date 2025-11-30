@@ -206,7 +206,6 @@ class UserService:
             )
         return user
 
-    # Остальные методы остаются без изменений...
     @staticmethod
     async def get_user_by_username_service(
         username: str, db: AsyncSession

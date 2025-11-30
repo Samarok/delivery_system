@@ -179,7 +179,6 @@ async def get_all_deliveries_for_flutter(
     return flutter_deliveries
 
 
-# Остальные функции остаются без изменений...
 async def get_deliveries_by_status(
     status_id: int, db, skip: int = 0, limit: int = DEFAULT_PAGE_SIZE
 ) -> List[Delivery]:

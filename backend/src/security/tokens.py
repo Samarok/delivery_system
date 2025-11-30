@@ -15,7 +15,7 @@ from core.constants import (
 from db.session import get_db
 from models.users import User
 
-# OAuth2 схема для авторизации в Swagger
+
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/api/auth/login")
 
 
@@ -38,7 +38,6 @@ async def get_current_user(
     except JWTError:
         raise credentials_exception
 
-    # Получаем пользователя с загруженной ролью напрямую из БД
     result = await db.execute(
         select(User).options(selectinload(User.role)).where(User.id == user_id)
     )
